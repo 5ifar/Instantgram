@@ -96,7 +96,7 @@ CREATE TABLE comments (
 
 ***Learning Insight:***
 
-We dont need a `id` field since we’ll not be referencing it anywhere as a Primary Key and also since essentially all Likes are identical. However one constraint that we need to setup is that a User can like a Photo only once. To implement this we need the `user_id` & `photo_id` value pair to be unqiue in Likes table data. This can be implemented as a Primary Key Constraint based on the combination of both `user_id` & `photo_id` fields. This is interesting since we are not creating a new Primary Key directly but rather using other tables existing Primary Key to emulate as this tables Primary Key.
+We dont need a `id` field since we’ll not be referencing it anywhere as a Primary Key and also since essentially all Likes are identical. However one constraint that we need to setup is that a User can like a Photo only once. To ensure this we need the `user_id` & `photo_id` value pairs are unqiue in Likes table data. This can be implemented as a Primary Key Constraint based on the combination of both `user_id` & `photo_id` fields. This is interesting since we are not creating a new Primary Key directly but rather using other tables existing Primary Key to emulate as this tables Primary Key.
 
 ***Create Likes Table Query:***
 
@@ -109,14 +109,34 @@ CREATE TABLE likes (
   FOREIGN KEY(photo_id) REFERENCES photos(id),
   PRIMARY KEY(user_id, photo_id)
 );
-
 ```
 
+### 5. Follows Table:
 
+***Columns:***
 
+1. `follower_id` - references User ID for User who followed from the Users table (Constraint: Foreign Key, Not Null)
+2. `followee_id` - references User ID for User who was followed from the Users table (Constraint: Foreign Key, Not Null)
+3. `created_at` - indicates the Follow user action timestamp
 
+---Images to be added---
 
+***Learning Insight:***
 
+We dont need a `id` field since we’ll not be referencing it anywhere as a Primary Key and also since essentially all Follows are identical. In Follows table, `follower_id` & `followee_id` fields have a One-way relationship i.e. For example if A follows B it does not mean B follows A. We need to setup a constraint that ensures that we don’t have duplicate follows i.e. A can follow B only once. To ensure this we need the `follower_id` and `followee_id` value pairs are unique in Follows table data. We'll follow the same approach used in Likes table. It will be implemented as a Primary Key Constraint based on the combination of both `follower_id` & `followee_id` fields.
+
+***Create Follows Table Query:***
+
+```sql
+CREATE TABLE follows (
+  follower_id INTEGER NOT NULL,
+  followee_id INTEGER NOT NULL,
+  created_at TIMESTAMP DEFAULT NOW(),
+  FOREIGN KEY(follower_id) REFERENCES users(id),
+  FOREIGN KEY(followee_id) REFERENCES users(id),
+  PRIMARY KEY(follower_id, followee_id)
+);
+```
 
 
 
