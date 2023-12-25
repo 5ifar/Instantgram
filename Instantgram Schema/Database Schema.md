@@ -4,7 +4,7 @@ The Instantgram DB Schema comprises of 7 Tables: Users, Photos, Comments, Likes,
 ---
 
 ## Table of Contents
-- [Table Schema](#table-schema-design)
+- [Table Schema Design](#table-schema-design)
 - [Table Relationship Diagram](#table-relationship-diagram)
 
 ---
