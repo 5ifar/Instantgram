@@ -1,4 +1,4 @@
-# 🧬 Instantgram Database Schema:
+# 🧬 Instantgram Database Schema
 The Instantgram DB Schema comprises of 7 Tables: Users, Photos, Comments, Likes, Follows, Tags & Photo_tags.
 
 ---
@@ -9,9 +9,9 @@ The Instantgram DB Schema comprises of 7 Tables: Users, Photos, Comments, Likes,
 
 ---
 
-## Table Schema Design:
+## Table Schema Design
 
-### 1. Users Table:
+### 1. Users Table
 
 **Columns:**
 
@@ -35,7 +35,7 @@ CREATE TABLE users (
 );
 ```
 
-### 2. Photos Table:
+### 2. Photos Table
 
 **Columns:**
 
@@ -58,7 +58,7 @@ CREATE TABLE photos (
 );
 ```
 
-### 3. Comments Table:
+### 3. Comments Table
 
 **Columns:**
 
@@ -88,7 +88,7 @@ CREATE TABLE comments (
 );
 ```
 
-### 4. Likes Table:
+### 4. Likes Table
 
 **Columns:**
 
@@ -116,7 +116,7 @@ CREATE TABLE likes (
 );
 ```
 
-### 5. Follows Table:
+### 5. Follows Table
 
 **Columns:**
 
@@ -144,7 +144,7 @@ CREATE TABLE follows (
 );
 ```
 
-### 6. Tags Table:
+### 6. Tags Table
 
 The Tags table possess the challenge of maintaining the Tags data as well as data about the corresponding Photo it was tagged to. To tackle this we have 3 possible ways of implementation:
 
@@ -211,7 +211,7 @@ CREATE TABLE tags (
 );
 ```
 
-### 7. Photo_tags Table:
+### 7. Photo_tags Table
 
 **Columns:**
 
@@ -236,6 +236,6 @@ CREATE TABLE photo_tags (
 
 ---
 
-## Table Relationship Diagram:
+## Table Relationship Diagram
 
 ---Images to be added---
