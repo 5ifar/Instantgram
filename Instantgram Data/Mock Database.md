@@ -1,5 +1,5 @@
-# 💾 Instantgram Mock Data
-The Instantgram Mock Data contains INSERT queries for the 7 Table Schemas.
+# 💾 Instantgram Mock Database
+The Instantgram Mock Database contains INSERT queries for the 7 Table Schemas.
 
 ---
 
