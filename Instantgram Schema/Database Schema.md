@@ -19,7 +19,8 @@ The Instantgram DB Schema comprises of 7 Tables: Users, Photos, Comments, Likes,
 2. `user_name` - indicates the User Name (Constraint: Unique, Not Null)
 3. `created_at` - indicates the User creation timestamp
 
----Images to be added---
+![image](https://github.com/5ifar/Instantgram/assets/146955609/c9b4fd1d-4054-49f2-8a38-672740579d0f)
+![image](https://github.com/5ifar/Instantgram/assets/146955609/0bcd9d68-bdee-4365-a927-b08776e6d464)
 
 ***Learning Insight:***
 
@@ -44,7 +45,8 @@ CREATE TABLE users (
 3. `user_id` - references User ID for User who posted the photo from the Users table (Constraint: Foreign Key, Not Null)
 4. `created_at` - indicates the Photo post timestamp
 
----Images to be added---
+![image](https://github.com/5ifar/Instantgram/assets/146955609/ea9fea99-3fd1-4341-90fb-9f17af3676bf)
+![image](https://github.com/5ifar/Instantgram/assets/146955609/c4d690de-ffa1-48ae-932c-7fb0aa74b853)
 
 **Create Photos Table Query:**
 
@@ -68,7 +70,8 @@ CREATE TABLE photos (
 4. `user_id` - references User ID for User who posted the photo from the Users table (Constraint: Foreign Key, Not Null)
 5. `created_at` - indicates the Comment post timestamp
 
----Images to be added---
+![image](https://github.com/5ifar/Instantgram/assets/146955609/ff15eee4-b766-4143-a105-0569832aaa89)
+![image](https://github.com/5ifar/Instantgram/assets/146955609/c0d166fe-35f2-4b26-b442-77ab312af119)
 
 ***Learning Insight:***
 
@@ -96,7 +99,7 @@ CREATE TABLE comments (
 2. `photo_id` - references Photo ID for Photo liked from the Photos table (Constraint: Foreign Key, Not Null)
 3. `created_at` - indicates the Like post action timestamp
 
----Images to be added---
+![image](https://github.com/5ifar/Instantgram/assets/146955609/3d27e316-e0b7-4f60-9ccb-fb0acdd8143f)
 
 ***Learning Insight:***
 
@@ -124,7 +127,8 @@ CREATE TABLE likes (
 2. `followee_id` - references User ID for User who was followed from the Users table (Constraint: Foreign Key, Not Null)
 3. `created_at` - indicates the Follow user action timestamp
 
----Images to be added---
+![image](https://github.com/5ifar/Instantgram/assets/146955609/ff69b580-f8ab-42ff-bb70-ca539048b264)
+![image](https://github.com/5ifar/Instantgram/assets/146955609/97567628-d91a-45e8-80ff-b492b5d8d352)
 
 ***Learning Insight:***
 
@@ -150,7 +154,7 @@ The Tags table possess the challenge of maintaining the Tags data as well as dat
 
 #### Method I: Embedd Tags as a column in the Photos table
 
----Images to be added---
+![image](https://github.com/5ifar/Instantgram/assets/146955609/5a41c5b3-175f-4600-ab25-bd634cb938e6)
 
 In this approach we can add Tags data as column in the existing Photos table. We mark each tag with # as a separator. We'll concatenate each new tag to be added to a photo.
 
@@ -167,7 +171,8 @@ In this approach we can add Tags data as column in the existing Photos table. We
 
 #### Method II: Use separate Photos & Tags table
 
----Images to be added---
+![image](https://github.com/5ifar/Instantgram/assets/146955609/c37a6951-587e-429c-8ea6-9d71c209782b)
+![image](https://github.com/5ifar/Instantgram/assets/146955609/92925d29-c9f5-47e4-b0c9-b21c6f759e5f)
 
 In this approach we create a separate Tags table that stores the tags and the photo it's tagged to data.
 
@@ -179,7 +184,9 @@ In this approach we create a separate Tags table that stores the tags and the ph
 
 #### Method III: Implement 3 Table approach - Photos, Tags & Photo_tags:
 
----Images to be added---
+![image](https://github.com/5ifar/Instantgram/assets/146955609/78beb6e4-248c-4099-8a15-07dbcbfab12b)
+![image](https://github.com/5ifar/Instantgram/assets/146955609/f210c83b-8de3-43dc-b217-b181a961a07f)
+![image](https://github.com/5ifar/Instantgram/assets/146955609/996eea49-36ed-45d3-9667-ae2f279c6124)
 
 In this approach we create 2 tables - Tags & Photo_tags. This would separate the Tags data and the Tagged Photo Data. We can then setup table relationships between them with Tags table acting as a Lookup table.
 
