@@ -182,7 +182,7 @@ In this approach we create a separate Tags table that stores the tags and the ph
 ***Disadvantages:***
 1. Slower implementation than Method I since Tag data is being stored redundantly i.e. Same tag will be stored multiple times only because it is tagged to a different photo.
 
-#### Method III: Implement 3 Table approach - Photos, Tags & Photo_tags:
+#### Method III: Implement 3 Table approach - Photos, Tags & Photo_tags
 
 ![image](https://github.com/5ifar/Instantgram/assets/146955609/78beb6e4-248c-4099-8a15-07dbcbfab12b)
 ![image](https://github.com/5ifar/Instantgram/assets/146955609/f210c83b-8de3-43dc-b217-b181a961a07f)
@@ -198,7 +198,7 @@ In this approach we create 2 tables - Tags & Photo_tags. This would separate the
 ***Disadvantages:***
 1. More work effort when inserting/updating new Tags to the Photo_tags table when they don’t exist in the Tags table.
 
-**Accepted Approach:**
+#### Accepted Approach
 
 We’ll be following Method III implementation since it’s the most optimal way as it separates the Tags data and the Tagged Photo Data.
 
