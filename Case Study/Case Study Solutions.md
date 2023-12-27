@@ -56,7 +56,7 @@ LIMIT 5;
 ```sql
 SELECT
   TO_CHAR(created_at, 'Day') AS dayofweek,
-  COUNT(*) AS usercount
+  COUNT(id) AS usercount
 FROM users
 GROUP BY dayofweek
 ORDER BY usercount DESC;
