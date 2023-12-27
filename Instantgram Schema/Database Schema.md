@@ -5,7 +5,7 @@ The Instantgram DB Schema comprises of 7 Tables: Users, Photos, Comments, Likes,
 
 ## Table of Contents
 - [Table Schema Design](#table-schema-design)
-- [Table Relationship Diagram](#table-relationship-diagram)
+- [Entity Relationship Diagram](#entity-relationship-diagram)
 
 ---
 
@@ -243,6 +243,8 @@ CREATE TABLE photo_tags (
 
 ---
 
-## Table Relationship Diagram
+## Entity Relationship Diagram
 
----Images to be added---
+![Instantgram Entity Relationship Diagram](https://github.com/5ifar/Instantgram/assets/146955609/a723bd05-8b52-49d7-ae1a-e3dcfdd0e794)
+
+[Link to Interactive Instantgram Entity Relationship Diagram](https://dbdiagram.io/d/Instantgram-Schema-Relationship-Diagram-658c3ee189dea62799a032b8)
