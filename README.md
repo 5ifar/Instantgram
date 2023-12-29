@@ -4,6 +4,8 @@ It was created as a self-learning project for the Udemy course: [The Ultimate My
 
 It showcases my competancy to tackle various SQL challenges and demonstrates my proficiency in SQL query writing and problem-solving skills.
 
+The Instantgram Project Schema & Case Study Queries have been executed using PostgreSQL v15 on pgAdmin 4 GUI.
+
 A special thanks to [Colt Steele](https://www.linkedin.com/in/coltsteele/) for creating this engaging SQL Bootcamp.
 
 ## 📚 Table of Contents
