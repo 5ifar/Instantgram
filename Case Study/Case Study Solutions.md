@@ -25,7 +25,7 @@ Instantgram wants to use their data to answer a few simple questions about their
 ---
 
 ## Case Study Questions and Solutions
-*The following queries have been executed using PostgreSQL v15 on pgAdmin 4.*
+*The following queries have been executed using PostgreSQL v15 on pgAdmin 4 GUI.*
 
 ### 1. We want to reward our users who have been around the longest. Find the 5 oldest users.
 
