@@ -1,5 +1,5 @@
 # 📷 Instantgram
-This repository serves as my Case study solution for the Instagram Mock Database SQL Project.
+This repository serves as my documentation for the Instagram Clone Mock Database Project.
 It was created as a self-learning project for the Udemy course: [The Ultimate MySQL Bootcamp](https://www.udemy.com/course/the-ultimate-mysql-bootcamp-go-from-sql-beginner-to-expert/) by Colt Steele.
 
 It showcases my competancy to tackle various SQL challenges and demonstrates my proficiency in SQL query writing and problem-solving skills.
