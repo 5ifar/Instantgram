@@ -272,9 +272,9 @@ $$
 DELIMITER ;
 ```
 
-### 2. Trigger to Log Instagram Unfollows:
+### 2. Trigger to Log Instantgram Unfollows:
 
-(We’ll first create unfollows table with the same schema as the follows table.)
+(We’ll first create a new unfollows table with the same schema as the follows table.)
 
 ```sql
 DELIMITER $$
