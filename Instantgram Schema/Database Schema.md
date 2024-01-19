@@ -6,6 +6,7 @@ The Instantgram DB Schema comprises of 7 Tables: Users, Photos, Comments, Likes,
 ## Table of Contents
 - [Table Schema Design](#table-schema-design)
 - [Entity Relationship Diagram](#entity-relationship-diagram)
+- [Additional Setup: Database Triggers](#additional-setup-database-triggers)
 
 ---
 
@@ -248,3 +249,42 @@ CREATE TABLE photo_tags (
 ![Instantgram Entity Relationship Diagram](https://github.com/5ifar/Instantgram/assets/146955609/a723bd05-8b52-49d7-ae1a-e3dcfdd0e794)
 
 [Link to Interactive Instantgram Entity Relationship Diagram](https://dbdiagram.io/d/Instantgram-Schema-Relationship-Diagram-658c3ee189dea62799a032b8)
+
+---
+
+## Additional Setup: Database Triggers
+Additional Database triggers can be setup to prevent Self-follow and log Unfollows.
+
+### 1. Trigger to Prevent Instantgram Self-follow:
+
+```sql
+DELIMITER $$
+CREATE TRIGGER prevent_self_follow
+BEFORE INSERT ON follows FOR EACH ROW
+BEGIN
+  IF NEW.follower_id = NEW.followee_id
+  THEN
+      SIGNAL SQLSTATE '45000'
+      SET MESSAGE_TEXT = 'You cannot follow yourself.';
+  END IF;
+END;
+$$
+DELIMITER ;
+```
+
+### 2. Trigger to Log Instagram Unfollows:
+
+(We’ll first create unfollows table with the same schema as the follows table.)
+
+```sql
+DELIMITER $$
+CREATE TRIGGER capture_unfollow
+AFTER DELETE ON follows FOR EACH ROW
+BEGIN
+   INSERT INTO unfollows
+   SET follower_id = OLD.follower_id,
+   followee_id = OLD.followee_id;
+END;
+$$
+DELIMITER ;
+```
