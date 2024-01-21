@@ -248,7 +248,7 @@ CREATE TABLE photo_tags (
 
 ![Instantgram Entity Relationship Diagram](https://github.com/5ifar/Instantgram/assets/146955609/a723bd05-8b52-49d7-ae1a-e3dcfdd0e794)
 
-[Link to Interactive Instantgram Entity Relationship Diagram](https://dbdiagram.io/d/Instantgram-Schema-Relationship-Diagram-658c3ee189dea62799a032b8)
+[Link to Interactive Instantgram Entity Relationship Diagram](https://dbdiagram.io/d/Instantgram-Entity-Relationship-Diagram-658c3ee189dea62799a032b8)
 
 ---
 
