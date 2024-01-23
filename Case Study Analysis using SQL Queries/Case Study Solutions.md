@@ -29,6 +29,9 @@ Instantgram wants to use their data to answer a few simple questions about their
 
 ### 1. We want to reward our users who have been around the longest. Find the 5 oldest users.
 
+**Steps:**
+- Order the result by `created_at` in the ascending order to get the earliest users. Limit the result by Top 5.
+
 **Query:**
 ```sql
 SELECT
@@ -38,9 +41,6 @@ FROM users
 ORDER BY created_at ASC
 LIMIT 5;
 ```
-
-**Steps:**
-- Order the result by `created_at` in the ascending order to get the earliest users. Limit the result by Top 5.
 
 **Answer:**
 |id|username|
@@ -58,6 +58,11 @@ LIMIT 5;
 
 ### 2. We need to figure out when to schedule an ad campaign. What day of the week do most users register on?
 
+**Steps:**
+- Use `TO_CHAR` function along with `Day` operator to extract Day of Week from the `created_at` column.
+- Group the result by `dayofweek` alias to get count of users on that day as `usercount`.
+- Order the result by `usercount` alias in the descending order to get the Top days with highest user count.
+
 **Query:**
 ```sql
 SELECT
@@ -67,11 +72,6 @@ FROM users
 GROUP BY dayofweek
 ORDER BY usercount DESC;
 ```
-
-**Steps:**
-- Use `TO_CHAR` function along with `Day` operator to extract Day of Week from the `created_at` column.
-- Group the result by `dayofweek` alias to get count of users on that day as `usercount`.
-- Order the result by `usercount` alias in the descending order to get the Top days with highest user count.
 
 **Answer:**
 |dayofweek|usercount|
@@ -91,6 +91,10 @@ ORDER BY usercount DESC;
 
 ### 3. We want to target our inactive users with an Email campaign. Find the users who have never posted a photo.
 
+**Steps:**
+- Implement LEFT JOIN to merge `users` and `photos` tables based on `users.id` and `photos.user_id` fields, ensuring all Users table data is retained.
+- Filter the result based on when `photos.id` field is NULL to get Users with NULL values in Photos table i.e Users who never posted a photo.
+
 **Query:**
 ```sql
 SELECT
@@ -99,10 +103,6 @@ FROM users
 LEFT JOIN photos ON users.id = photos.user_id
 WHERE photos.id IS NULL;
 ```
-
-**Steps:**
-- Implement LEFT JOIN to merge `users` and `photos` tables based on `users.id` and `photos.user_id` fields, ensuring all Users table data is retained.
-- Filter the result based on when `photos.id` field is NULL to get Users with NULL values in Photos table i.e Users who never posted a photo.
 
 **Answer:**
 |username|
@@ -141,6 +141,11 @@ WHERE photos.id IS NULL;
 
 ### 4. We were running a contest to see who can get the most likes on a single photo. Find which User and Photo won the contest.
 
+**Steps:**
+- Implement INNER JOIN to merge `photos` and `likes` tables based on `photos.id` and `likes.photo_id` fields. Then implement another INNER JOIN to merge with `users` table based on `users.id` and `photos.user_id` fields.
+- Group the result by `username` and `photos.id` fields to form user-photo value pair groups to calculate the total likes based on count of `likes.user_id`. NOTE: As per SELECT statement we should add `image_url` to the GROUP BY clause but we are using `photos.id` instead to boost query run efficiency since integer grouping would run faster then string grouping.
+- Order the result by `total_likes` in descending order. Limit the result by Top 1.
+
 **Query:**
 ```sql
 SELECT
@@ -155,11 +160,6 @@ ORDER BY total_likes DESC
 LIMIT 1;
 ```
 
-**Steps:**
-- Implement INNER JOIN to merge `photos` and `likes` tables based on `photos.id` and `likes.photo_id` fields. Then implement another INNER JOIN to merge with `users` table based on `users.id` and `photos.user_id` fields.
-- Group the result by `username` and `photos.id` fields to form user-photo value pair groups to calculate the total likes based on count of `likes.user_id`. NOTE: As per SELECT statement we should add `image_url` to the GROUP BY clause but we are using `photos.id` instead to boost query run efficiency since integer grouping would run faster then string grouping.
-- Order the result by `total_likes` in descending order. Limit the result by Top 1.
-
 **Answer:**
 |username|image_url|total_likes|
 |-|-|-|
@@ -172,13 +172,13 @@ LIMIT 1;
 
 ### 5. The Investors want to know how many times does the average user post?
 
+**Steps:**
+- Divide subquery for total count of photos by subquery for total count for users.
+
 **Query:**
 ```sql
 SELECT (SELECT COUNT(*) FROM photos) / (SELECT COUNT(*) FROM users) AS avg_post_count;
 ```
-
-**Steps:**
-- Divide subquery for total count of photos by subquery for total count for users.
 
 **Answer:**
 |avg_post_count|
@@ -192,6 +192,11 @@ SELECT (SELECT COUNT(*) FROM photos) / (SELECT COUNT(*) FROM users) AS avg_post_
 
 ### 6. A brand wants to know which hashtags to use in a post. What are the top 5 most commonly used hashtags?
 
+**Steps:**
+- Implement INNER JOIN to merge `tags` and `photo_tags` tables based on `tags.id` and `photo_tags.tag_id` fields.
+- Group the result by `tags.id` and calculate the `tag_count` alias by total count of `photo_id` in each group.
+- Order the result by `tag_count` in descending order. Limit the result to Top 5.
+
 **Query:**
 ```sql
 SELECT
@@ -203,11 +208,6 @@ GROUP BY tags.id
 ORDER BY tag_count DESC
 LIMIT 5;
 ```
-
-**Steps:**
-- Implement INNER JOIN to merge `tags` and `photo_tags` tables based on `tags.id` and `photo_tags.tag_id` fields.
-- Group the result by `tags.id` and calculate the `tag_count` alias by total count of `photo_id` in each group.
-- Order the result by `tag_count` in descending order. Limit the result to Top 5.
 
 **Answer:**
 |tag_name|tag_count|
@@ -225,6 +225,10 @@ LIMIT 5;
 
 ### 7. We want to deal with Bots on our site. Find users who have liked every single photo on the site.
 
+**Steps:**
+- Implement INNER JOIN to merge `users` and `likes` tables based on `users.id` and `likes.user_id` fields.
+- Group the result by `user.id` field and filter the groups out that have the count of `photo_id` in the group equal to the total count of all photos.
+
 **Query:**
 ```sql
 SELECT
@@ -234,10 +238,6 @@ INNER JOIN likes ON users.id = likes.user_id
 GROUP BY users.id
 HAVING COUNT(photo_id) = (SELECT COUNT(id) FROM photos);
 ```
-
-**Steps:**
-- Implement INNER JOIN to merge `users` and `likes` tables based on `users.id` and `likes.user_id` fields.
-- Group the result by `user.id` field and filter the groups out that have the count of `photo_id` in the group equal to the total count of all photos.
 
 **Answer:**
 |username|
@@ -263,6 +263,10 @@ HAVING COUNT(photo_id) = (SELECT COUNT(id) FROM photos);
 
 ### 8. We also want to identify all the Celebrities. Find users who have never commented on a photo.
 
+**Steps:**
+- Implement LEFT JOIN to merge `users` and `comments` tables based on `users.id` and `comments.user_id` fields, ensuring all Users table data is retained.
+- Filter the results based on if `comments.id` is NULL i.e if the `username` field has no corresponding value in the `comments.id` column.
+
 **Query:**
 ```sql
 SELECT
@@ -271,10 +275,6 @@ FROM users
 LEFT JOIN comments ON users.id = comments.user_id
 WHERE comments.id IS NULL
 ```
-
-**Steps:**
-- Implement LEFT JOIN to merge `users` and `comments` tables based on `users.id` and `comments.user_id` fields, ensuring all Users table data is retained.
-- Filter the results based on if `comments.id` is NULL i.e if the `username` field has no corresponding value in the `comments.id` column.
 
 **Answer:**
 |username|
@@ -310,6 +310,11 @@ WHERE comments.id IS NULL
 
 ### 9. Are we overrun with Bots and Celebrity accounts on Instantgram? Find the percentage of our users who have either never commented on a photo or have commented on every photo.
 
+**Steps:**
+- For getting the Celebrities, implement LEFT JOIN to merge `users` and `comments` tables based on `users.id` and `comments.user_id` fields, ensuring all Users table data is retained. Filter the results based on if `comments.id` is NULL i.e if the `username` field has no corresponding value in the `comments.id` column.
+- For getting the Bots, implement INNER JOIN to merge `users` and `comments` tables based on `users.id` and `comments.user_id` fields. Group the result by `user.id` field and filter the groups out that have the count of `comments.id` in the group equal to the total count of all photos.
+- Union all the Bots data & Celebrities data without duplicates.
+
 **Query:**
 ```sql
 (SELECT
@@ -325,11 +330,6 @@ INNER JOIN comments ON users.id = comments.user_id
 GROUP BY users.id
 HAVING COUNT(comments.id) = (SELECT COUNT(id) FROM photos));
 ```
-
-**Steps:**
-- For getting the Celebrities, implement LEFT JOIN to merge `users` and `comments` tables based on `users.id` and `comments.user_id` fields, ensuring all Users table data is retained. Filter the results based on if `comments.id` is NULL i.e if the `username` field has no corresponding value in the `comments.id` column.
-- For getting the Bots, implement INNER JOIN to merge `users` and `comments` tables based on `users.id` and `comments.user_id` fields. Group the result by `user.id` field and filter the groups out that have the count of `comments.id` in the group equal to the total count of all photos.
-- Union all the Bots data & Celebrities data without duplicates.
 
 **Answer:**
 |username|
