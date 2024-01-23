@@ -29,7 +29,7 @@ Instantgram wants to use their data to answer a few simple questions about their
 
 ### 1. We want to reward our users who have been around the longest. Find the 5 oldest users.
 
-**Code:**
+**Query:**
 ```sql
 SELECT
   id,
@@ -58,7 +58,7 @@ LIMIT 5;
 
 ### 2. We need to figure out when to schedule an ad campaign. What day of the week do most users register on?
 
-**Code:**
+**Query:**
 ```sql
 SELECT
   TO_CHAR(created_at, 'Day') AS dayofweek,
@@ -91,7 +91,7 @@ ORDER BY usercount DESC;
 
 ### 3. We want to target our inactive users with an Email campaign. Find the users who have never posted a photo.
 
-**Code:**
+**Query:**
 ```sql
 SELECT
   username
@@ -141,7 +141,7 @@ WHERE photos.id IS NULL;
 
 ### 4. We were running a contest to see who can get the most likes on a single photo. Find which User and Photo won the contest.
 
-**Code:**
+**Query:**
 ```sql
 SELECT
   username,
@@ -172,7 +172,7 @@ LIMIT 1;
 
 ### 5. The Investors want to know how many times does the average user post?
 
-**Code:**
+**Query:**
 ```sql
 SELECT (SELECT COUNT(*) FROM photos) / (SELECT COUNT(*) FROM users) AS avg_post_count;
 ```
@@ -192,7 +192,7 @@ SELECT (SELECT COUNT(*) FROM photos) / (SELECT COUNT(*) FROM users) AS avg_post_
 
 ### 6. A brand wants to know which hashtags to use in a post. What are the top 5 most commonly used hashtags?
 
-**Code:**
+**Query:**
 ```sql
 SELECT
   tag_name,
@@ -225,7 +225,7 @@ LIMIT 5;
 
 ### 7. We want to deal with Bots on our site. Find users who have liked every single photo on the site.
 
-**Code:**
+**Query:**
 ```sql
 SELECT
   username
@@ -263,7 +263,7 @@ HAVING COUNT(photo_id) = (SELECT COUNT(id) FROM photos);
 
 ### 8. We also want to identify all the Celebrities. Find users who have never commented on a photo.
 
-**Code:**
+**Query:**
 ```sql
 SELECT
   username
@@ -310,7 +310,7 @@ WHERE comments.id IS NULL
 
 ### 9. Are we overrun with Bots and Celebrity accounts on Instantgram? Find the percentage of our users who have either never commented on a photo or have commented on every photo.
 
-**Code:**
+**Query:**
 ```sql
 (SELECT
   username
