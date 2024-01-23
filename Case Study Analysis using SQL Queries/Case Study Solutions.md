@@ -1,5 +1,5 @@
 # 📸 Instantgram Case Study
-<img src="https://reactjsexample.com/content/images/2022/01/Code-2022-29-26-45.jpg" width="30%" height="30%">
+<img src="https://reactjsexample.com/content/images/2022/01/Code-2022-29-26-45.jpg" width="20%" height="20%">
 
 ---
 
