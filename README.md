@@ -1,4 +1,4 @@
-# 📷 Instantgram
+# <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Instagram_icon.png/900px-Instagram_icon.png?20200512141346" width="4%" height="4%"> Instantgram
 This repository serves as my documentation for the Instagram Clone Mock Database Project.
 It was created as a self-learning project for the Udemy course: [The Ultimate MySQL Bootcamp](https://www.udemy.com/course/the-ultimate-mysql-bootcamp-go-from-sql-beginner-to-expert/) by Colt Steele.
 
