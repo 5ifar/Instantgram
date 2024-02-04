@@ -1,5 +1,4 @@
-# 📸 Instantgram Case Study
-<img src="https://reactjsexample.com/content/images/2022/01/Code-2022-29-26-45.jpg" width="20%" height="20%">
+# <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Instagram_icon.png/900px-Instagram_icon.png?20200512141346" width="4%" height="4%"> Instantgram Case Study
 
 ---
 
