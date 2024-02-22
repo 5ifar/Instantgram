@@ -12,4 +12,4 @@ A special thanks to [Colt Steele](https://www.linkedin.com/in/coltsteele/) for c
 Please find the resource links for the project below:
 - [Instantgram Schema](https://github.com/5ifar/Instantgram/tree/main/Instantgram%20Schema)
 - [Instantgram Data](https://github.com/5ifar/Instantgram/tree/main/Instantgram%20Data)
-- [Case Study](https://github.com/5ifar/Instantgram/tree/main/Case%20Study)
+- [Case Study](https://github.com/5ifar/Instantgram/tree/main/Case%20Study%20Analysis%20using%20SQL%20Queries)
